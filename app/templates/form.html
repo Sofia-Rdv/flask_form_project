@@ -15,7 +15,56 @@
         <label for="email">Your Awesome Email:</label>
         <input type="email" id="email" name="email" required><br><br>
 
+        <!-- Цвет -->
+        <label for="color">Любимый цвет:</label>
+        <input type="color" id="color" name="color" value="#ff69b4">
+        <span id="color-preview" style="font-weight:bold;">🎨</span><br><br>
+
+        <!-- Профессия -->
+        <label for="profession">Кто ты по жизни?</label>
+        <select id="profession" name="profession" class="funny-select">
+            <option value="Разработчик">Разработчик (Кофеман)</option>
+            <option value="Дизайнер">Дизайнер (Рисовака)</option>
+            <option value="Менеджер">Менеджер (Тот, кто пишет письма)</option>
+        </select><br><br>
+
+        <!-- Хобби (Чекбоксы) -->
+        <p>Твои увлечения:</p>
+        <div class="checkboxes">
+            <label><input type="checkbox" name="hobbies" value="Книги">📚 Книги</label>
+            <label><input type="checkbox" name="hobbies" value="Спорт">⚽️ Спорт</label>
+            <label><input type="checkbox" name="hobbies" value="Игры">🎮 Игры</label>
+        </div><br>
+
+        <!-- Уровень (радио) -->
+        <p>Твой уровень мастерства:</p>
+        <label><input type="radio" name="level" value="Новичок" checked>🌱 Новичок</label>
+        <label><input type="radio" name="level" value="Продвинутый">🚀 Продвинутый</label>
+
         <button type="submit" class="funny-title">🚀 Let's Go!</button>
     </form>
+
+    <script>
+        // Анимация кнопки-сюрприза (Доп. задание 2)
+        const sBtn = document.getElementById('surprise-btn');
+        sBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            sBtn.style.position = 'fixed';
+            sBtn.style.left = x + 'px';
+            sBtn.style.top = y + 'px';
+        });
+
+        sBtn.addEventListener('click', () => {
+            document.getElementById('secret-text').style.display = 'block';
+            alert("Поймал!");
+        });
+
+        // Превью цвета (Задание 2.2)
+        const colorInput = document.getElementById('color');
+        colorInput.addEventListener('input', (e) => {
+            document.getElementById('color-preview').style.color = e.target.value;
+        });
+    </script>
 </body>
 </html>

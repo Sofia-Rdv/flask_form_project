@@ -1,14 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submission Successful</title>
+    <title>Твой результат!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body>
-    <h1>Submission Successful</h1>
-    <p>Thank you, <strong>{{ name }}</strong>!</p>
-    <p>We have sent a confirmation to <strong>{{ email }}</strong>.</p>
-    <a href="https://ivashev-education.ru/">Go back to form</a>
+<body class="result-body">
+    <div class="funny-form result-card">
+        <h1>Ура, {{ name }}! 🎉</h1>
+
+        <div class="user-info">
+            <!-- style, так как цвет динамический (из Flask) -->
+            <p>🌈 Твой любимый цвет: <span style="color: {{ color }}; font-weight: bold;">{{ color }}</span></p>
+
+            <p>💼 Твоя профессия: <strong>{{ profession }}</strong></p>
+            <p>🎮 Твои хобби: <strong>{{ hobbies | join(', ') if hobbies else 'Секретные хобби' }}</strong></p>
+            <p>🏆 Твой уровень: <strong>{{ level }}</strong></p>
+        </div>
+
+        <div class="joke-container">
+            <h4>Случайная шутка для тебя:</h4>
+            <p><em>{{ joke }}</em></p>
+        </div>
+
+        <a href="/" class="funny-button back-link">Назад к форме</a>
+    </div>
 </body>
 </html>
