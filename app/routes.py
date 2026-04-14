@@ -33,13 +33,8 @@ def submit():
 
         # --- Проверка формы (Доп. задание 3) ---
         if not name or name.strip() == "":
-            return """
-            <body style='background:#fffb91; text-align: center; font-family: "Comic Sans MS", sans-serif; padding:50px'>
-                <h1>😱 ОЙ-ОЙ-ОЙ!</h1>
-                <p>Мы не можем обработать форму без Вашего имени, Мистер Аноним!</p>
-                <a href='/'>Живо назад!</a>
-            </body>
-            """, 400
+            return render_template("error.html",
+                                   message="Мы не можем обработать форму без Вашего имени, Мистер Аноним!"), 400
         joke = random.choice(JOKES)
 
         return render_template("result.html", name=name, email=email,
