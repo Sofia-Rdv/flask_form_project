@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Твой результат!</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body class="result-body">
+{% extends 'base.html' %}
+
+{% block title %}Твой результат!{% endblock %}
+{% block body_class %}result-body{% endblock %}
+
+{% block content %}
     <div class="funny-form result-card">
         <h1>Ура, {{ name }}! 🎉</h1>
 
@@ -25,5 +23,4 @@
 
         <a href="/" class="funny-button back-link">Назад к форме</a>
     </div>
-</body>
-</html>
+{% endblock %}
