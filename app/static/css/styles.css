@@ -147,3 +147,11 @@ input[type="checkbox"]:hover {
     font-size: 1rem;
     margin-top: 10px;
 }
+
+/* Секретный текст */
+.secret-message {
+    display: none;
+    color: #ff0000;
+    font-weight: bold;
+    margin-top: 10px;
+}
