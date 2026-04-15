@@ -1,27 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funny Form</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-    <h1 class="funny-title">😄 Enter Your Details! 🦄</h1>
-    <form action="/submit" method="POST" class="funny-title">
-        <label for="name">Your Super Cool Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+{% extends 'base.html' %}
 
-        <label for="email">Your Awesome Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+{% block content %}
+    <h1 class="funny-title">😄 Введите Свои Данные! 🦄</h1>
+    <form action="/submit" method="POST" class="funny-form">
+        <label for="name">Твое Супер Крутое Имя:</label>
+        <input type="text" id="name" name="name" required minlength="2" maxlength="20"><br><br>
+
+        <label for="email">Твоя Потрясающая Эл. Почта:</label>
+        <input type="email" id="email" name="email" required placeholder="name@example.com"><br><br>
 
         <!-- Цвет -->
-        <label for="color">Любимый цвет:</label>
+        <label for="color">Любимый Цвет:</label>
         <input type="color" id="color" name="color" value="#ff69b4">
         <span id="color-preview" style="font-weight:bold;">🎨</span><br><br>
 
         <!-- Профессия -->
-        <label for="profession">Кто ты по жизни?</label>
+        <label for="profession">Кто Ты По Жизни?</label>
         <select id="profession" name="profession" class="funny-select">
             <option value="Разработчик">Разработчик (Кофеман)</option>
             <option value="Дизайнер">Дизайнер (Рисовака)</option>
@@ -29,7 +23,7 @@
         </select><br><br>
 
         <!-- Хобби (Чекбоксы) -->
-        <p>Твои увлечения:</p>
+        <p>Твои Увлечения:</p>
         <div class="checkboxes">
             <label><input type="checkbox" name="hobbies" value="Книги">📚 Книги</label>
             <label><input type="checkbox" name="hobbies" value="Спорт">⚽️ Спорт</label>
@@ -37,16 +31,22 @@
         </div><br>
 
         <!-- Уровень (радио) -->
-        <p>Твой уровень мастерства:</p>
+        <p>Твой Уровень Мастерства:</p>
         <label><input type="radio" name="level" value="Новичок" checked>🌱 Новичок</label>
         <label><input type="radio" name="level" value="Продвинутый">🚀 Продвинутый</label>
 
-        <button type="submit" class="funny-title">🚀 Let's Go!</button>
-    </form>
+        <button type="submit" class="funny-title">🚀 Вперед!</button>
 
+        <button type="button" id="surprise-btn" class="surprise-button">Кнопка-сюрприз 🎁</button>
+        <p id="secret-text" class="secret-message">ТЫ МЕНЯ НАШЕЛ! 🏆</p>
+    </form>
+{% endblock %}
+
+{% block scripts %}
     <script>
         // Анимация кнопки-сюрприза (Доп. задание 2)
         const sBtn = document.getElementById('surprise-btn');
+
         sBtn.addEventListener('mouseover', () => {
             const x = Math.random() * (window.innerWidth - 100);
             const y = Math.random() * (window.innerHeight - 50);
@@ -66,5 +66,4 @@
             document.getElementById('color-preview').style.color = e.target.value;
         });
     </script>
-</body>
-</html>
+{% endblock %}
