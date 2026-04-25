@@ -99,4 +99,4 @@ def internal_server_error(e):
     :return: tuple: Шаблон ошибки и HTTP-статус 500.
     """
     logger.critical(f"ОШИБКА 500: {str(e)}", exc_info=True)
-    return render_template("error.html", message="Наш сервер приуныл.")
+    return render_template("error.html", message="Наш сервер приуныл."), 500
